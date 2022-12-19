@@ -1,0 +1,32 @@
+[
+    {
+        "id" : 1,
+        "value": "Market",
+        "image": "https://iili.io/Hxei6sR.png"
+    },
+    {
+        "id" : 2,
+        "value": "Yemek",
+        "image": "https://iili.io/Hxei4Wv.png"
+    },
+    {
+        "id" : 3,
+        "value": "Kıyafet",
+        "image": "https://iili.io/Hx5OK9n.png"
+    },
+    {
+        "id" : 4,
+        "value": "Kırtasiye",
+        "image": "https://iili.io/Hx5O2at.png"
+    },
+    {
+        "id": 5,
+        "value": "Teknoloji",
+        "image": "https://iili.io/HxktkI1.png"
+    },
+    {
+        "id" : 6,
+        "value": "Diğer",
+        "image": "https://iili.io/Hx5OdFI.png"
+    }
+]
