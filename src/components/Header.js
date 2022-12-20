@@ -14,7 +14,7 @@ function Header({ total, data, setData }) {
   const [disabled, setDisabled] = useState(true)
   const [addDisabled, setAddDisabled] = useState(true)
 
-  const [money, setMoney] = useState(0);
+  const [money, setMoney] = useState(0)
   const [currentMoney, setCurrentMoney] = useState(0)
 
   const [expensePrice, setExpensePrice] = useState(0)
@@ -71,6 +71,16 @@ function Header({ total, data, setData }) {
     currentDateAndTime()
   },[data])
 
+  useEffect(() => () => {
+    const saveCurrentMoneyToLocalStorage = () => {
+        localStorage('myMoney', 0);
+    }
+    
+    return () => {
+        saveCurrentMoneyToLocalStorage();
+    }
+  })
+
   useEffect(() => {
     const loadCurrentMoneyFromLocalStorage = () => {
         const storedMoney = JSON.parse(localStorage.getItem('myMoney'));
@@ -91,17 +101,22 @@ function Header({ total, data, setData }) {
     setAddDisabled(true)
   }
   
+  //console.log(currentMoney)
+
   return (
     <>
         <div className='mt-2'>
-            <Alert variant='success'>  
-                {total > 0 && currentMoney-total > 0 && (
+            <Alert variant='success'>
+                {currentMoney === 0 && (
+                    <Alert.Heading className='text-center'>Harcayacak paranız yok. 'Paramı Düzenle' kısmından bakiyenizi belirleyiniz.</Alert.Heading>
+                )}
+                {currentMoney !== 0 && total > 0 && currentMoney-total > 0 && (
                     <Alert.Heading className='text-center'>Harcayacak {moneyFormat(currentMoney-total)}₺ var.</Alert.Heading>
                 )}
-                {data.length === 0 && currentMoney && (
+                {currentMoney !== 0 && data.length === 0 && (
                     <Alert.Heading className='text-center'>Harcayacak {moneyFormat(currentMoney)}₺ var.</Alert.Heading>
                 )}
-                {currentMoney === total && (
+                {currentMoney !== 0 && currentMoney === total && (
                     <Alert.Heading className='text-center'>Paranız kalmadı.</Alert.Heading>
                 )}
                 <hr />
