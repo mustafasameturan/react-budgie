@@ -71,20 +71,12 @@ function Header({ total, data, setData }) {
     currentDateAndTime()
   },[data])
 
-  useEffect(() => () => {
-    const saveCurrentMoneyToLocalStorage = () => {
-        localStorage('myMoney', 0);
-    }
-    
-    return () => {
-        saveCurrentMoneyToLocalStorage();
-    }
-  })
 
   useEffect(() => {
     const loadCurrentMoneyFromLocalStorage = () => {
         const storedMoney = JSON.parse(localStorage.getItem('myMoney'));
-        setCurrentMoney(parseInt(storedMoney))
+        storedMoney !== null ? setCurrentMoney(parseInt(storedMoney)) : setCurrentMoney(0)
+
     }
 
     loadCurrentMoneyFromLocalStorage()
@@ -101,13 +93,11 @@ function Header({ total, data, setData }) {
     setAddDisabled(true)
   }
   
-  //console.log(currentMoney)
-
   return (
     <>
         <div className='mt-2'>
             <Alert variant='success'>
-                {currentMoney === 0 && (
+                {currentMoney === 0 && !currentMoney && (
                     <Alert.Heading className='text-center'>Harcayacak paranız yok. 'Paramı Düzenle' kısmından bakiyenizi belirleyiniz.</Alert.Heading>
                 )}
                 {currentMoney !== 0 && total > 0 && currentMoney-total > 0 && (
