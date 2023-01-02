@@ -25,7 +25,17 @@
         "image": "https://iili.io/HxktkI1.png"
     },
     {
-        "id" : 6,
+        "id": 6,
+        "value": "Kahvaltı",
+        "image": "https://iili.io/HuSyNqu.png"
+    },
+    {
+        "id": 7,
+        "value": "Kahve",
+        "image": "https://iili.io/HuSyjse.png"
+    },
+    {
+        "id" : 8,
         "value": "Diğer",
         "image": "https://iili.io/Hx5OdFI.png"
     }

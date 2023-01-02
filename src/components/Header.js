@@ -61,9 +61,12 @@ function Header({ total, data, setData }) {
 
   useEffect(() => {
     const currentDateAndTime = () => {
-        var date = new Date()
-        var currentDate = date.getDate() + '-' + (date.getMonth() + 1) + '-' + date.getFullYear()
-        var currentTime = date.getHours() + ':' + date.getMinutes()
+        let date = new Date()
+        let twoDigitMonth = `0${date.getMonth() + 1}`.slice(-2);
+        let twoDigitDay = `0${date.getDay() + 1}`.slice(-2)
+        let twoDigitMinutes = `0${date.getMinutes() + 1}`.slice(-2) 
+        let currentDate = twoDigitDay + '-' + twoDigitMonth + '-' + date.getFullYear()
+        let currentTime = date.getHours() + ':' + twoDigitMinutes
     
         setCreatedDate(currentDate)
         setCreatedTime(currentTime)
@@ -76,7 +79,6 @@ function Header({ total, data, setData }) {
     const loadCurrentMoneyFromLocalStorage = () => {
         const storedMoney = JSON.parse(localStorage.getItem('myMoney'));
         storedMoney !== null ? setCurrentMoney(parseInt(storedMoney)) : setCurrentMoney(0)
-
     }
 
     loadCurrentMoneyFromLocalStorage()
