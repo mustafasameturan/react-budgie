@@ -17,7 +17,7 @@ function App() {
 
   useEffect(() => {
     setTotal(
-      data.reduce((acc, item) => {
+      data && data.reduce((acc, item) => {
         return acc + item.price;
       }, 0)
     );
