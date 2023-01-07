@@ -17,11 +17,11 @@ function App() {
 
   useEffect(() => {
     setTotal(
-      data && data.reduce((acc, item) => {
+      data.reduce((acc, item) => {
         return acc + item.price;
       }, 0)
     );
-
+    
     const saveToLocaleStorage = () => {
       localStorage.setItem("data", JSON.stringify(data));
     };
