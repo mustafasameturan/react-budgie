@@ -16,13 +16,11 @@ function App() {
   }, []);
 
   useEffect(() => {
-    if(data){
       setTotal(
         data.reduce((acc, item) => {
           return acc + item.price;
         }, 0)
       );
-    }
     
     const saveToLocaleStorage = () => {
       localStorage.setItem("data", JSON.stringify(data));

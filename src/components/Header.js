@@ -75,12 +75,6 @@ function Header({ total, data, setData }) {
   },[data])
 
   useEffect(() => {
-    if (!data) {
-        return null; // or some other default value or error message
-      }
-  })
-
-  useEffect(() => {
     const loadCurrentMoneyFromLocalStorage = () => {
         const storedMoney = JSON.parse(localStorage.getItem('myMoney'));
         storedMoney !== null ? setCurrentMoney(parseInt(storedMoney)) : setCurrentMoney(0)
