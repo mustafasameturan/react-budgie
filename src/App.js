@@ -16,11 +16,13 @@ function App() {
   }, []);
 
   useEffect(() => {
-    setTotal(
-      data.reduce((acc, item) => {
-        return acc + item.price;
-      }, 0)
-    );
+    if(data){
+      setTotal(
+        data.reduce((acc, item) => {
+          return acc + item.price;
+        }, 0)
+      );
+    }
     
     const saveToLocaleStorage = () => {
       localStorage.setItem("data", JSON.stringify(data));
@@ -31,11 +33,13 @@ function App() {
   return (
       <>
         <Container>
-          <Header
-            total={total}
-            data={data}
-            setData={setData}
-          />
+          
+            <Header
+              total={total}
+              data={data}
+              setData={setData}
+            />
+          
           {data && data.length === 0 && (
             <div className="d-flex align-items-centers justify-content-center">
               <Image className="mt-5" src="https://iili.io/Hxv9Zj2.png" width={390} height={390} />

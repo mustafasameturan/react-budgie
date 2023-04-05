@@ -74,6 +74,11 @@ function Header({ total, data, setData }) {
     currentDateAndTime()
   },[data])
 
+  useEffect(() => {
+    if (!data) {
+        return null; // or some other default value or error message
+      }
+  })
 
   useEffect(() => {
     const loadCurrentMoneyFromLocalStorage = () => {
